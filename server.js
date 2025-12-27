@@ -1,11 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import connectDB from "./config/db.js";
-import authRoutes from "./routes/authRoutes.js";
-import fitnessRoutes from "./routes/fitnessRoutes.js";
-import nutritionRoutes from "./routes/nutritionRoutes.js";
-import goalRoutes from "./routes/goalRoutes.js";
+import connectDB from "./src/config/db.js";
+import authRoutes from "./src/routes/authRoutes.js";
+import fitnessRoutes from "./src/routes/fitnessRoutes.js";
+import nutritionRoutes from"./src/routes/nutritionRoutes.js";
+import goalRoutes from "./src/routes/goalRoutes.js";
 
 dotenv.config();
 connectDB();
