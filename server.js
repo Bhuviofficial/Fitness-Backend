@@ -2,9 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./src/config/db.js";
+
 import authRoutes from "./src/routes/authRoutes.js";
-import fitnessRoutes from "./src/routes/fitnessRoutes.js";
-import nutritionRoutes from"./src/routes/nutritionRoutes.js";
+import nutritionRoutes from "./src/routes/nutritionRoutes.js";
 import goalRoutes from "./src/routes/goalRoutes.js";
 
 dotenv.config();
@@ -15,13 +15,13 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use("/api/fitness", fitnessRoutes);
 app.use("/api/nutrition", nutritionRoutes);
 app.use("/api/goals", goalRoutes);
 
 app.get("/", (req, res) => {
-  res.json({ message: "API Running" });
+  res.send("Health & Wellness API running");
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(process.env.PORT || 5000, () =>
+  console.log("Server running")
+);
