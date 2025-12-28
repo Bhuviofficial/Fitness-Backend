@@ -1,13 +1,9 @@
 import express from "express";
 import authMiddleware from "../middleware/authMiddleware.js";
+import { getDashboard } from "../controllers/dashboardController.js";
 
 const router = express.Router();
 
-router.get("/", authMiddleware, (req, res) => {
-  res.json({
-    message: "Dashboard data fetched successfully",
-    user: req.user
-  });
-});
+router.get("/", authMiddleware, getDashboard);
 
 export default router;
