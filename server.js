@@ -23,9 +23,8 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.use("/api/auth", authRoutes);
-app.use("/api/auth/register",authRoutes);
-app.use("/api/auth/login",authRoutes);
+app.use("/api/register", registerUser);
+app.use("/api/login", loginUser);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/nutrition", nutritionRoutes);
 app.use("/api/goals", goalRoutes);
