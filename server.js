@@ -17,7 +17,6 @@ app.use(cors({
 
 app.use(express.json());
 
-// ✅ AUTH ROUTES
 app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
