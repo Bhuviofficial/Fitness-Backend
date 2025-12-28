@@ -1,6 +1,7 @@
 export const getDashboard = (req, res) => {
-  res.json({
-    message: "Dashboard loaded successfully",
+  res.status(200).json({
+    success: true,
+    message: "Welcome to Dashboard",
     user: req.user
   });
 };

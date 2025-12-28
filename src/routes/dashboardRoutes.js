@@ -1,9 +1,15 @@
 import express from "express";
 import authMiddleware from "../middleware/authMiddleware.js";
-import { getDashboard } from "../controllers/dashboardController.js";
 
 const router = express.Router();
 
-router.get("/", authMiddleware, getDashboard);
+router.get("/", authMiddleware, (req, res) => {
+  res.json({
+    name: req.user.name,
+    calories: 520,
+    workouts: 2,
+    steps: 7800,
+  });
+});
 
 export default router;
