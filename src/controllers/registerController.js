@@ -19,7 +19,6 @@ export const registerUser = async (req, res) => {
       password: hashedPassword
     });
 
-    // ✅ CREATE TOKEN
     const token = jwt.sign(
       { id: user._id },
       process.env.JWT_SECRET,
