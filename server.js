@@ -14,10 +14,10 @@ connectDB();
 
 const app = express();
 
-/* ---------- MIDDLEWARE ---------- */
+// Middleware
 app.use(
   cors({
-    origin: "*", // allow frontend (Netlify/Vercel)
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -25,18 +25,17 @@ app.use(
 
 app.use(express.json());
 
-/* ---------- ROUTES ---------- */
+// API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/nutrition", nutritionRoutes);
 app.use("/api/goals", goalRoutes);
 
-/* ---------- HEALTH CHECK ---------- */
 app.get("/", (req, res) => {
   res.send("Health & Fitness API running 🚀");
 });
 
-/* ---------- SERVER ---------- */
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
