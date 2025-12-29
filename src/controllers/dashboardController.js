@@ -10,7 +10,7 @@ export const getDashboardData = async (req, res) => {
         workout: 45
       }
     });
-  } catch (err) {
-    res.status(500).json({ message: "Dashboard fetch failed" });
+  } catch (error) {
+    res.status(500).json({ message: "Dashboard data error" });
   }
 };
