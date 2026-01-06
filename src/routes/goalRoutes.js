@@ -1,12 +1,10 @@
 import express from "express";
-import { addGoal, getGoals, updateGoal } from "../controllers/goalController.js";
-import authMiddleware from "../middleware/authMiddleware.js";
+import { getGoals, setGoals } from "../controllers/goalController.js";
+import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// Protected routes
-router.post("/", authMiddleware, addGoal);
-router.get("/", authMiddleware, getGoals);
-router.put("/:id", authMiddleware, updateGoal);
+router.get("/", protect, getGoals);
+router.post("/", protect, setGoals);
 
 export default router;
