@@ -6,7 +6,7 @@ const reminderSchema = new mongoose.Schema({
     ref: "User"
   },
   message: String,
-  time: String // "08:00"
+  time: String 
 });
 
 export default mongoose.model("Reminder", reminderSchema);

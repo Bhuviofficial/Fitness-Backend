@@ -1,8 +1,5 @@
 import Goal from "../models/Goal.js";
 
-/* ==============================
-   GET USER GOALS
-================================ */
 export const getGoals = async (req, res) => {
   try {
     const goal = await Goal.findOne({ user: req.user.id });
@@ -13,9 +10,6 @@ export const getGoals = async (req, res) => {
   }
 };
 
-/* ==============================
-   CREATE / UPDATE GOALS
-================================ */
 export const setGoals = async (req, res) => {
   try {
     const {

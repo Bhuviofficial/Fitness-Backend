@@ -7,7 +7,7 @@ const exerciseSchema = new mongoose.Schema({
     required: true
   },
   exerciseName: String,
-  duration: Number, // minutes
+  duration: Number, 
   caloriesBurned: Number,
   date: {
     type: Date,
