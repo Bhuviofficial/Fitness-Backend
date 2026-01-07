@@ -4,6 +4,8 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import nutritionRoutes from "./routes/nutritionRoutes.js";
+import goalRoutes from "./routes/goalRoutes.js";
+import exerciseRoutes from "./routes/exerciseRoutes.js";
 
 const app = express();
 
@@ -13,5 +15,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/nutrition", nutritionRoutes);
+app.use("/api/goals", goalRoutes);
+app.use("/api/exercise", exerciseRoutes);
 
 export default app;
