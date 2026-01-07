@@ -1,4 +1,4 @@
-import Exercise from "../models/exerciseModel.js";
+import Exercise from "../models/Exercise.js";
 
 // ➕ Add Exercise
 export const addExercise = async (req, res) => {
