@@ -1,15 +1,17 @@
 import Exercise from "../models/Exercise.js";
 
 export const addExercise = async (req, res) => {
-  const exercise = await Exercise.create({ ...req.body, user: req.user.id });
-  res.json(exercise);
+  const exercise = await Exercise.create({
+    user: req.user.id,
+    name: req.body.name,
+    duration: req.body.duration,
+    calories: req.body.calories,
+  });
+
+  res.status(201).json(exercise);
 };
 
-export const getTodayExercises = async (req, res) => {
-  const start = new Date().setHours(0,0,0,0);
-  const exercises = await Exercise.find({
-    user: req.user.id,
-    date: { $gte: start }
-  });
+export const getExercises = async (req, res) => {
+  const exercises = await Exercise.find({ user: req.user.id });
   res.json(exercises);
 };
