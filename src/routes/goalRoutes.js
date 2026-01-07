@@ -4,7 +4,10 @@ import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
+// Get all goals for logged-in user
 router.get("/", protect, getGoals);
+
+// Create new goal
 router.post("/", protect, setGoals);
 
 export default router;
