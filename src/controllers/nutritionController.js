@@ -1,22 +1,15 @@
 import Nutrition from "../models/Nutrition.js";
 
-export const addNutrition = async (req, res) => {
-  try {
-    const nutrition = await Nutrition.create({
-      user: req.user.id,
-      ...req.body,
-    });
-    res.status(201).json(nutrition);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+export const addMeal = async (req, res) => {
+  const meal = await Nutrition.create({ ...req.body, user: req.user.id });
+  res.json(meal);
 };
 
-export const getNutrition = async (req, res) => {
-  try {
-    const data = await Nutrition.find({ user: req.user.id });
-    res.json(data);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+export const getTodayMeals = async (req, res) => {
+  const start = new Date().setHours(0,0,0,0);
+  const meals = await Nutrition.find({
+    user: req.user.id,
+    date: { $gte: start }
+  });
+  res.json(meals);
 };

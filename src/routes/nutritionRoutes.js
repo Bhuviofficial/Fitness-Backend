@@ -1,11 +1,8 @@
 import express from "express";
-import { addNutrition, getNutrition } from "../controllers/nutritionController.js";
-import authMiddleware from "../middleware/authMiddleware.js";
+import { addMeal, getTodayMeals } from "../controllers/nutritionController.js";
+import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
-
-// Protected routes
-router.post("/", authMiddleware, addNutrition);
-router.get("/", authMiddleware, getNutrition);
-
+router.post("/", protect, addMeal);
+router.get("/today", protect, getTodayMeals);
 export default router;
