@@ -12,11 +12,11 @@ const reminderSchema = mongoose.Schema(
       required: true,
     },
     time: {
-      type: String, // "08:00 AM"
+      type: String, 
       required: true,
     },
     type: {
-      type: String, // water | workout | nutrition
+      type: String, 
       required: true,
     },
     isActive: {

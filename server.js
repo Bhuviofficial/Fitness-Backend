@@ -36,7 +36,8 @@ app.use("/api/nutrition", nutritionRoutes);
 app.use("/api/goals", goalRoutes);
 app.use("/api/exercises", exerciseRoutes);
 app.use("/api/reminders", reminderRoutes);
-// Health Check Route
+
+
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
