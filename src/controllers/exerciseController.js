@@ -1,14 +1,36 @@
-import Exercise from "../models/Exercise.js";
+import Exercise from "../models/exerciseModel.js";
 
+// ➕ Add Exercise
 export const addExercise = async (req, res) => {
-  const exercise = await Exercise.create({
-    userId: req.userId,
-    ...req.body
-  });
-  res.status(201).json(exercise);
+  try {
+    const { name, duration, caloriesBurned } = req.body;
+
+    if (!name || !duration || !caloriesBurned) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const exercise = await Exercise.create({
+      user: req.user.id,
+      name,
+      duration,
+      caloriesBurned,
+    });
+
+    res.status(201).json(exercise);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
+// 📄 Get User Exercises
 export const getExercises = async (req, res) => {
-  const exercises = await Exercise.find({ userId: req.userId });
-  res.json(exercises);
+  try {
+    const exercises = await Exercise.find({ user: req.user.id }).sort({
+      date: -1,
+    });
+
+    res.json(exercises);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
