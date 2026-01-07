@@ -1,21 +1,30 @@
 import Nutrition from "../models/Nutrition.js";
 import Exercise from "../models/Exercise.js";
 
-export const getDashboard = async (req, res) => {
-  const today = new Date().setHours(0,0,0,0);
+export const getDashboardData = async (req, res) => {
+  try {
+    const userId = req.user.id;
 
-  const meals = await Nutrition.find({ user: req.user.id, date: { $gte: today } });
-  const exercises = await Exercise.find({ user: req.user.id, date: { $gte: today } });
+    const nutrition = await Nutrition.find({ user: userId });
+    const exercises = await Exercise.find({ user: userId });
 
-  const caloriesToday = meals.reduce((a, b) => a + b.calories, 0);
-  const workout = exercises.reduce((a, b) => a + b.duration, 0);
+    const totalCalories = nutrition.reduce(
+      (sum, item) => sum + item.calories,
+      0
+    );
 
-  res.json({
-    stats: {
-      caloriesToday,
-      workout,
-      water: 2.5,
-      stepsToday: workout * 100,
-    },
-  });
+    const totalWorkouts = exercises.length;
+
+    res.status(200).json({
+      success: true,
+      totalCalories,
+      totalWorkouts,
+      mealsLogged: nutrition.length,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to load dashboard data",
+    });
+  }
 };
