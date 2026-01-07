@@ -9,6 +9,7 @@ import dashboardRoutes from "./src/routes/dashboardRoutes.js";
 import nutritionRoutes from "./src/routes/nutritionRoutes.js";
 import goalRoutes from "./src/routes/goalRoutes.js";
 import exerciseRoutes from "./src/routes/exerciseRoutes.js";
+import reminderRoutes from "./src/routes/reminderRoutes.js";
 
 
 dotenv.config();
@@ -34,6 +35,7 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/nutrition", nutritionRoutes);
 app.use("/api/goals", goalRoutes);
 app.use("/api/exercises", exerciseRoutes);
+app.use("/api/reminders", reminderRoutes);
 // Health Check Route
 app.get("/", (req, res) => {
   res.status(200).json({
