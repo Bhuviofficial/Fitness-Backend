@@ -7,9 +7,18 @@ const exerciseSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    name: String,
-    duration: Number,
-    calories: Number,
+    name: {
+      type: String,
+      required: true,
+    },
+    duration: {
+      type: Number,
+      required: true,
+    },
+    calories: {
+      type: Number,
+      required: true,
+    },
   },
   { timestamps: true }
 );

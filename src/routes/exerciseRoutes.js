@@ -1,10 +1,14 @@
 import express from "express";
-import { addExercise, getExercises } from "../controllers/exerciseController.js";
+import {
+  createExercise,
+  getExercises,
+} from "../controllers/exerciseController.js";
 import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", protect, addExercise);
+/* USER MUST BE LOGGED IN */
+router.post("/", protect, createExercise);
 router.get("/", protect, getExercises);
 
 export default router;

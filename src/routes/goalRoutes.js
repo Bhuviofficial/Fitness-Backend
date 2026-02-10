@@ -1,10 +1,10 @@
 import express from "express";
 import { createGoal, getGoals } from "../controllers/goalController.js";
-import protect from "../middleware/authMiddleware.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", protect, createGoal);
-router.get("/", protect, getGoals);
+router.post("/", authMiddleware, createGoal);
+router.get("/", authMiddleware, getGoals);
 
 export default router;

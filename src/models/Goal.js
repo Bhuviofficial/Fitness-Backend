@@ -7,9 +7,18 @@ const goalSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    name: String,
-    target: Number,
-    unit: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    target: {
+      type: Number,
+      required: true,
+    },
+    unit: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
